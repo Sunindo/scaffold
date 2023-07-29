@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  database:
+    image: mysql:5.7.11
+    platform: linux/amd64
+    ports:
+      - "3306:3306"
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: "$DB_PASSWORD"
+      MYSQL_DATABASE: "$DB_DATABASE"
+      MYSQL_USER: "$DB_USERNAME"
+      MYSQL_PASSWORD: "$DB_PASSWORD"
+    networks:
+      - scaffold_laravel
+
+  laravel:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+    depends_on:
+      - database
+    links:
+      - database:database
+    networks:
+      - scaffold_laravel
+
+networks:
+  scaffold_laravel:
+    driver: bridge
