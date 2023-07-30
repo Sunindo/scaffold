@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index($id)
     {
-        // Would prefer not to run this here; Would rather this run once on home load and then stored locally
+        // TODO: Create cache table to store category results in and remove the below section
         $parentCategories = Categories::select('id', 'name')->whereNull('parent_id')->get()->toArray();
 
         $categories = [];
@@ -29,7 +29,7 @@ class ProductController extends Controller
                 }
             }
         }
-        // Need to store the results once locally then called in blade
+        // TODO: Delete above section
 
         $product = Products::findOrFail($id);
 

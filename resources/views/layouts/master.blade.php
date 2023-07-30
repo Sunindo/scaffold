@@ -25,7 +25,7 @@
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed pace-done sidebar-lg-show">
     <header class="app-header navbar">
-        <a class="navbar-brand" href="#" style="padding-left: 50px;">
+        <a class="navbar-brand" href="{{ route("home") }}" style="padding-left: 50px;">
             <span class="navbar-brand-full">Products Dashboard</span>
         </a>
 
@@ -36,7 +36,7 @@
 
     <div class="app-body">
         @include('partials.menu')
-        <main class="main">
+        <main class="main" style="margin-left: 400px;">
             <div style="padding-top: 20px" class="container-fluid">
                 @yield('content')
             </div>

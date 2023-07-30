@@ -28,6 +28,12 @@ class HomeController extends Controller
             }
         }
 
-        return view('layouts.master', compact('categories'));
+        $products = Products::select('parent_category.name as category_type', 'sub_category.name as category_name',
+            'products.id', 'products.name', 'products.price', 'products.description')
+            ->join('categories as sub_category', 'sub_category.id', '=', 'products.category_id')
+            ->join('categories as parent_category', 'parent_category.id', '=', 'sub_category.parent_id')
+            ->get()->toArray();
+
+        return view('home.index', compact('categories', 'products'));
     }
 }
