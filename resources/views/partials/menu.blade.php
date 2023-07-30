@@ -18,7 +18,7 @@
                         <ul class="nav-dropdown-items">
                             @foreach($products as $id => $productName)
                             <li class="nav-item" style="padding-left: 100px;">
-                                <a href="" class="nav-link">
+                                <a href="{{ route("product.index", $id) }}" class="nav-link">
                                     <i class="fa-fw fas fa-unlock-alt nav-icon"></i>
                                     {{ $productName }}
                                 </a>
@@ -33,5 +33,4 @@
         </ul>
 
     </nav>
-    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
 </div>
