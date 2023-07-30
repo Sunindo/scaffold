@@ -55,7 +55,9 @@
 <script>
     $(document).ready(function() {
         $('.datatable').DataTable({
+            lengthMenu: [ 5, 10, 25, 50, 75, 100 ],
             paging: true,
+            pageLength: 5,
         })
     });
 </script>

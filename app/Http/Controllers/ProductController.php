@@ -29,7 +29,7 @@ class ProductController extends Controller
                 }
             }
         }
-        // TODO: Delete above section
+        // TODO: Delete above section; Slows down page, better to cache results for faster processing
 
         $product = Products::findOrFail($id);
 
